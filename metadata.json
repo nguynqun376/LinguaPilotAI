@@ -1,0 +1,10 @@
+{
+  "name": "Remix: LinguaPilot AI",
+  "description": "An AI-powered language-learning companion designed to foster learner autonomy and self-directed study, supporting academic research on AI tutoring efficacy.",
+  "requestFramePermissions": [
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

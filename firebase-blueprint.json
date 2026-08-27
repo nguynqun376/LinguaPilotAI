@@ -1,0 +1,48 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Learner and Admin account profile with credentials and configuration",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "name": { "type": "string" },
+        "password": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "learner"] },
+        "targetLanguage": { "type": "string" },
+        "level": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "lastLogin": { "type": "string" }
+      },
+      "required": ["email", "name", "role", "createdAt"]
+    },
+    "UserStudyData": {
+      "title": "UserStudyData",
+      "description": "Synced study records, metrics, logs, and telemetry for user",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "goals": { "type": "array" },
+        "reflections": { "type": "array" },
+        "researchGroup": { "type": "string" },
+        "totalStudyMinutes": { "type": "number" },
+        "socraticHintsCount": { "type": "number" },
+        "directAnswers": { "type": "number" },
+        "speakingEvaluationsCount": { "type": "number" },
+        "sessions": { "type": "array" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["email", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "UserProfile",
+      "description": "User profile records indexed by sanitized user email or id"
+    },
+    "/study_data/{userId}": {
+      "schema": "UserStudyData",
+      "description": "User study metrics and telemetry data"
+    }
+  }
+}
